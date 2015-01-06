@@ -1,0 +1,4 @@
+E:\Programming\miroboteditor\TestApplication\obj\Debug\TestApplication.csprojResolveAssemblyReference.cache
+E:\Programming\miroboteditor\TestApplication\obj\Debug\App.g.cs
+E:\Programming\miroboteditor\TestApplication\obj\Debug\TestApplication_Content.g.cs
+E:\Programming\miroboteditor\TestApplication\obj\Debug\TestApplication_MarkupCompile.cache

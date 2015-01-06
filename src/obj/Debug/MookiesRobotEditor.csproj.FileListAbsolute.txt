@@ -1,0 +1,82 @@
+E:\Programming\miroboteditor\src\obj\Debug\Controls\AngleConverterControl.baml
+E:\Programming\miroboteditor\src\obj\Debug\Controls\DocumentControl.baml
+E:\Programming\miroboteditor\src\obj\Debug\Controls\frmReverse.baml
+E:\Programming\miroboteditor\src\obj\Debug\Controls\KUKADocument.baml
+E:\Programming\miroboteditor\src\obj\Debug\Controls\ListFromFileBox.baml
+E:\Programming\miroboteditor\src\obj\Debug\Controls\MenuControl.baml
+E:\Programming\miroboteditor\src\obj\Debug\Controls\MessageControl.baml
+E:\Programming\miroboteditor\src\obj\Debug\Controls\OutputWindowMessageControl.baml
+E:\Programming\miroboteditor\src\obj\Debug\Controls\SettingsFlyout.baml
+E:\Programming\miroboteditor\src\obj\Debug\Controls\SnippetPad.baml
+E:\Programming\miroboteditor\src\obj\Debug\Controls\ValueBoxViewModelControl.baml
+E:\Programming\miroboteditor\src\obj\Debug\Controls\xmlReader.baml
+E:\Programming\miroboteditor\src\obj\Debug\Dialogs\KFDAssistant.baml
+E:\Programming\miroboteditor\src\obj\Debug\Dictionary1.baml
+E:\Programming\miroboteditor\src\obj\Debug\Forms\AttributeViewer.baml
+E:\Programming\miroboteditor\src\obj\Debug\Forms\DialogWindow.baml
+E:\Programming\miroboteditor\src\obj\Debug\Forms\SplashScreen.baml
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\QuantecRemoteView.baml
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\KFDAssistant.baml
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\KUKADatSort.baml
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\KUKAInlineFormHelper.baml
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\KUKAKFDDialog.baml
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\KUKASystemFunctions.baml
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\RenamePositionWindow.baml
+E:\Programming\miroboteditor\src\obj\Debug\Languages\KUKACompletionItems.baml
+E:\Programming\miroboteditor\src\obj\Debug\Pads\Options\BoolOptionControl.baml
+E:\Programming\miroboteditor\src\obj\Debug\Styles\Styles.baml
+E:\Programming\miroboteditor\src\obj\Debug\Templates\Delete.baml
+E:\Programming\miroboteditor\src\obj\Debug\Templates\EditorControlTemplate.baml
+E:\Programming\miroboteditor\src\obj\Debug\Templates\ImageTemplates.baml
+E:\Programming\miroboteditor\src\obj\Debug\Pads\Shift\ShiftBase.baml
+E:\Programming\miroboteditor\src\obj\Debug\Pads\Shift\TransformBase.baml
+E:\Programming\miroboteditor\src\obj\Debug\Pads\Shift\ShiftWindow.baml
+E:\Programming\miroboteditor\src\obj\Debug\ResourceDictionaries\ExplorerWindowDictionary.baml
+E:\Programming\miroboteditor\src\obj\Debug\Templates\VisualVariableItem.baml
+E:\Programming\miroboteditor\src\obj\Debug\Templates\AdjustST.baml
+E:\Programming\miroboteditor\src\obj\Debug\Templates\ExplorerWindow.baml
+E:\Programming\miroboteditor\src\obj\Debug\Templates\MenuDictionary.baml
+E:\Programming\miroboteditor\src\obj\Debug\ViewModel\IOListBox.baml
+E:\Programming\miroboteditor\src\obj\Debug\Views\AboutViewModelView.baml
+E:\Programming\miroboteditor\src\obj\Debug\Controls\frmReverse.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Controls\GotoDialog.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Controls\ListFromFileBox.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Controls\SnippetPad.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Controls\xmlReader.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Dialogs\KFDAssistant.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Dialogs\KFDDialog.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\ExplorerControl\FileExplorerWindow.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Forms\AboutWindow.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Forms\AttributeViewer.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Forms\DialogWindow.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Forms\SplashScreen.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\GUI\Dialogs\About\About.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\GUI\Editor\FindAndReplace.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\GUI\KUKA\frmAdjustST.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\KUKAObjectBrowser.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\QuantecRemoteView.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\KFDAssistant.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\KUKADatSort.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\KUKAInlineFormHelper.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\KUKAKFDDialog.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\KUKASystemFunctions.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Language Specific\RenamePositionWindow.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\MainWindow.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Pads\Options\BoolOptionControl.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Pads\Options\OptionsWindow.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Pads\Shift\ShiftBase.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Pads\Shift\TransformBase.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Pads\Shift\ShiftWindow.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Templates\VisualVariableItem.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Views\AboutViewModelView.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\App.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\miRobotEditor_Content.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\miRobotEditor_MarkupCompile.cache
+E:\Programming\miroboteditor\src\obj\Debug\miRobotEditor_MarkupCompile.lref
+E:\Programming\miroboteditor\src\obj\Debug\MookiesRobotEditor.csprojResolveAssemblyReference.cache
+E:\Programming\miroboteditor\src\obj\Debug\Styles\Brushes.baml
+E:\Programming\miroboteditor\src\obj\Debug\GUI\Editor\Editor.g.cs
+E:\Programming\miroboteditor\src\obj\Debug\Resources\Icons.baml
+E:\Programming\miroboteditor\src\obj\Debug\Resources\Icons.g.cs
+E:\Programming\miroboteditor\src\bin\Debug\miRobotEditor.exe.config
