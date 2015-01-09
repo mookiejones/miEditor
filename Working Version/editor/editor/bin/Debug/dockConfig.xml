@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LayoutRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <RootPanel Orientation="Vertical">
+    <LayoutPanel Orientation="Horizontal">
+      <LayoutAnchorablePaneGroup Orientation="Horizontal" DockWidth="300">
+        <LayoutAnchorablePane Name="LeftPane" />
+      </LayoutAnchorablePaneGroup>
+      <LayoutDocumentPane>
+        <LayoutDocument Title="Noname" IsSelected="True" IsLastFocusedDocument="True" LastActivationTimeStamp="01/09/2015 10:00:18" />
+      </LayoutDocumentPane>
+      <LayoutAnchorablePane Name="RightPane" DockWidth="250">
+        <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Functions" IsSelected="True" ContentId="FunctionTool" />
+        <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Angle Converter" ContentId="AngleConverterTool" />
+      </LayoutAnchorablePane>
+    </LayoutPanel>
+    <LayoutAnchorablePane Name="BottomPane" DockHeight="200">
+      <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Object Browser" IsSelected="True" ContentId="ObjectBrowserTool" LastActivationTimeStamp="01/09/2015 10:00:31" />
+      <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Messages" ContentId="MessageViewTool" LastActivationTimeStamp="01/09/2015 10:00:31" />
+      <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Notes" ContentId="NotesTool" LastActivationTimeStamp="01/09/2015 10:00:30" />
+      <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="Local Variables" ContentId="LocalVariablesTool" LastActivationTimeStamp="01/09/2015 10:00:30" />
+    </LayoutAnchorablePane>
+  </RootPanel>
+  <TopSide />
+  <RightSide />
+  <LeftSide />
+  <BottomSide />
+  <FloatingWindows />
+  <Hidden />
+</LayoutRoot>
