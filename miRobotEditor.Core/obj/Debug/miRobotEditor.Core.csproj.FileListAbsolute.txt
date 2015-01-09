@@ -1,6 +1,0 @@
-E:\Programming\miroboteditor\miRobotEditor.Core\obj\Debug\miRobotEditor.Core.csprojResolveAssemblyReference.cache
-E:\Programming\miroboteditor\miRobotEditor.Core\obj\Debug\miRobotEditor.Core.g.resources
-E:\Programming\miroboteditor\miRobotEditor.Core\bin\Debug\miRobotEditor.Core.dll
-E:\Programming\miroboteditor\miRobotEditor.Core\bin\Debug\miRobotEditor.Core.pdb
-E:\Programming\miroboteditor\miRobotEditor.Core\obj\Debug\miRobotEditor.Core.dll
-E:\Programming\miroboteditor\miRobotEditor.Core\obj\Debug\miRobotEditor.Core.pdb

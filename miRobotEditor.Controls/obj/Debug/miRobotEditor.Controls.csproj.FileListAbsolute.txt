@@ -1,6 +1,0 @@
-E:\Programming\miroboteditor\miRobotEditor.Controls\obj\Debug\miRobotEditor.Controls.csprojResolveAssemblyReference.cache
-E:\Programming\miroboteditor\miRobotEditor.Controls\obj\Debug\Generic.baml
-E:\Programming\miroboteditor\miRobotEditor.Controls\obj\Debug\miRobotEditor.Controls_MarkupCompile.cache
-E:\Programming\miroboteditor\miRobotEditor.Controls\obj\Debug\miRobotEditor.Controls.g.resources
-E:\Programming\miroboteditor\miRobotEditor.Controls\obj\Debug\miRobotEditor.Controls.Properties.Resources.resources
-E:\Programming\miroboteditor\miRobotEditor.Controls\obj\Debug\miRobotEditor.Controls.csproj.GenerateResource.Cache
