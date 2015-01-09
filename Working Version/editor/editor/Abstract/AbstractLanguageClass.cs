@@ -30,6 +30,8 @@ namespace miRobotEditor.Abstract
     [Localizable(false)]
     public abstract class AbstractLanguageClass : ViewModelBase, ILanguageRegex
     {
+
+        public const RegexOptions RO_OPT = RegexOptions.IgnoreCase | RegexOptions.Multiline;
         public const string RootPathPropertyName = "RootPath";
         public const string FileNamePropertyName = "FileName";
         public const string RobotMenuItemsPropertyName = "RobotMenuItems";
@@ -866,7 +868,9 @@ namespace miRobotEditor.Abstract
 
             public void FindVariables(string filename, ILanguageRegex regex)
             {
+                temp = true;
                 Functions = FindMatches(regex.MethodRegex, Global.ImgMethod, filename).ToList();
+                temp = false;
                 Structures = FindMatches(regex.StructRegex, Global.ImgStruct, filename).ToList();
                 Fields = FindMatches(regex.FieldRegex, Global.ImgField, filename).ToList();
                 Signals = FindMatches(regex.SignalRegex, Global.ImgSignal, filename).ToList();
@@ -875,6 +879,7 @@ namespace miRobotEditor.Abstract
             }
         }
 
+        public static bool temp = false;
         private static IEnumerable<IVariable> FindMatches(Regex matchstring, string imgPath, string filepath)
         {
             var list = new List<IVariable>();
@@ -891,12 +896,6 @@ namespace miRobotEditor.Abstract
                 var match = matchstring.Match(input);
                 while (match.Success)
                 {
-
-                    if (match != null && match.Groups[2] != null)
-                    {
-                        var v = match.Groups[2].ToString();
-                    }
-                      
                     list.Add(new Variable
                     {
                         Declaration = match.Groups[0].ToString(),

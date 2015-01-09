@@ -27,13 +27,13 @@
             <TabItem Header="Functions">
                 <DataGrid IsReadOnly="True" Style="{StaticResource DataGridStyle}"
                           ColumnHeaderStyle="{StaticResource DataGridHeaderGlassEffect}"
+                            MouseDoubleClick="OnMouseDoubleClick"
                           ItemsSource="{Binding Functions}">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Width="Auto" IsReadOnly="True">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Height="16" Width="16" Source="{Binding Icon}"
-                                           d:DataContext="{d:DesignInstance classes:Variable}" />
+                                    <Image Height="16" Width="16" Source="{Binding Icon}" d:DataContext="{d:DesignInstance classes:Variable}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

@@ -178,8 +178,7 @@ namespace miRobotEditor.Languages
         {
             get
             {
-                return new Regex("^(ENUM)\\s+([\\d\\w]+)\\s+([\\d\\w,]+)",
-                    RegexOptions.IgnoreCase | RegexOptions.Multiline);
+                return new Regex("^(ENUM)\\s+([\\d\\w]+)\\s+([\\d\\w,]+)",RO_OPT);
             }
         }
 
@@ -187,7 +186,7 @@ namespace miRobotEditor.Languages
         {
             get
             {
-                return new Regex("DECL STRUC|[^|\n]STRUC\\s([\\w\\d]+\\s*)", RegexOptions.IgnoreCase | RegexOptions.Multiline);
+                return new Regex("DECL STRUC|[^|\n]STRUC\\s([\\w\\d]+\\s*)", RO_OPT);
             }
         }
 
@@ -196,9 +195,7 @@ namespace miRobotEditor.Languages
             get
             {
                 return
-                    new Regex(
-                        "^[DECL ]*[GLOBAL ]*[CONST ]*(INT|REAL|BOOL|CHAR)\\s+([\\$0-9a-zA-Z_\\[\\],\\$]+)=?([^\\r\\n;]*);?([^\\r\\n]*)",
-                        RegexOptions.IgnoreCase | RegexOptions.Multiline);
+                    new Regex("^[DECL ]*[GLOBAL ]*[CONST ]*(INT|REAL|BOOL|CHAR)\\s+([\\$0-9a-zA-Z_\\[\\],\\$]+)=?([^\\r\\n;]*);?([^\\r\\n]*)", RO_OPT);
             }
         }
 
@@ -211,8 +208,7 @@ namespace miRobotEditor.Languages
         {
             get
             {
-                return new Regex("^[GLOBAL ]*(DEF)+\\s+([\\w_\\d]+\\s*)\\(",
-                    RegexOptions.IgnoreCase | RegexOptions.Multiline);
+                return new Regex("^[GLOBAL ]*(DEF)+\\s+([\\w_\\d]+\\s*)\\(", RO_OPT);
             }
         }
 
@@ -230,8 +226,7 @@ namespace miRobotEditor.Languages
         {
             get
             {
-                return new Regex("^(SIGNAL+)\\s+([\\d\\w]+)\\s+([^\\r\\;]*)",
-                    RegexOptions.IgnoreCase | RegexOptions.Multiline);
+                return new Regex("^(SIGNAL+)\\s+([\\d\\w]+)\\s+([^\\r\\;]*)", RO_OPT);
             }
         }
 
@@ -239,8 +234,7 @@ namespace miRobotEditor.Languages
         {
             get
             {
-                return new Regex("^[DECL ]*[GLOBAL ]*(POS|E6POS|E6AXIS|FRAME) ([\\w\\d_\\$]+)=?\\{?([^}}]*)?\\}?",
-                    RegexOptions.IgnoreCase | RegexOptions.Multiline);
+                return new Regex("^[DECL ]*[GLOBAL ]*(POS|E6POS|E6AXIS|FRAME) ([\\w\\d_\\$]+)=?\\{?([^}}]*)?\\}?", RO_OPT);
             }
         }
 
@@ -360,9 +354,9 @@ namespace miRobotEditor.Languages
             var extension = Path.GetExtension(filepath.ToLower());
             if (extension != null)
             {
-                if (!(extension == ".src"))
+                if (extension != ".src")
                 {
-                    if (!(extension == ".dat"))
+                    if (extension != ".dat")
                     {
                         if (extension == ".sub" || extension == ".sps" || extension == ".kfd")
                         {

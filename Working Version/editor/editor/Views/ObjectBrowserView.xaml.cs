@@ -1,10 +1,18 @@
-﻿using System.Windows.Controls;
+﻿using System.IO;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using miRobotEditor.Interfaces;
+using miRobotEditor.ViewModel;
+using Microsoft.Practices.ServiceLocation;
 
 namespace miRobotEditor.Views
 {
     /// <summary>
     ///     Interaction logic for ObjectBrowserView.xaml
     /// </summary>
+    // ReSharper disable once RedundantExtendsListEntry
     public sealed partial class ObjectBrowserView : UserControl
     {
         public ObjectBrowserView()
@@ -12,6 +20,90 @@ namespace miRobotEditor.Views
             InitializeComponent();
         }
 
-      
+
+
+        private void OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var child = (DependencyObject)e.OriginalSource;
+            var dataGridRow = TryFindParent<DataGridRow>(child);
+            if (dataGridRow != null)
+            {
+                var dataGrid = sender as DataGrid;
+                if (dataGrid != null && !dataGrid.CurrentCell.IsValid) return;
+                if (dataGrid != null)
+                {
+                    var variable = dataGrid.CurrentCell.Item as IVariable;
+                    var instance = ServiceLocator.Current.GetInstance<MainViewModel>();
+                    if (variable != null && File.Exists(variable.Path))
+                    {
+                        instance.OpenFile(variable);
+                    }
+                }
+                e.Handled = true;
+            }
+        }
+
+        public T TryFindParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            var parentObject = GetParentObject(child);
+            T result;
+            if (parentObject == null)
+            {
+                result = default(T);
+            }
+            else
+            {
+                var parent = parentObject as T;
+                T resultObject;
+
+                if ((resultObject = parent) == null)
+                {
+                    resultObject = TryFindParent<T>(parentObject);
+                }
+                result = resultObject;
+            }
+            return result;
+        }
+
+        public DependencyObject GetParentObject(DependencyObject child)
+        {
+            DependencyObject result;
+            if (child == null)
+            {
+                result = null;
+            }
+            else
+            {
+                var contentElement = child as ContentElement;
+                if (contentElement != null)
+                {
+                    var parent = ContentOperations.GetParent(contentElement);
+                    if (parent != null)
+                    {
+                        result = parent;
+                    }
+                    else
+                    {
+                        var frameworkContentElement = contentElement as FrameworkContentElement;
+                        result = ((frameworkContentElement != null) ? frameworkContentElement.Parent : null);
+                    }
+                }
+                else
+                {
+                    var frameworkElement = child as FrameworkElement;
+                    if (frameworkElement != null)
+                    {
+                        var parent = frameworkElement.Parent;
+                        if (parent != null)
+                        {
+                            result = parent;
+                            return result;
+                        }
+                    }
+                    result = VisualTreeHelper.GetParent(child);
+                }
+            }
+            return result;
+        }
     }
 }
