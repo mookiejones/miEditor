@@ -60,7 +60,8 @@ namespace miRobotEditor.Controls.TextEditor.Snippets
             get;
             set;
         }
-        public CompletionContextInfo(CompletionType type, string filter, Key lastKey, char lastChar)
+
+        protected CompletionContextInfo(CompletionType type, string filter, Key lastKey, char lastChar)
         {
             CompletionType = type;
             FilterText = filter;

@@ -315,25 +315,27 @@ namespace miRobotEditor.ViewModel
                 try {
                     if (dbConnection.State != ConnectionState.Open)
                         dbConnection.Open();
+
+                    using (var cmd = new OleDbCommand(command, dbConnection))
+                    {
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader != null && reader.Read())
+                            {
+                                var text = reader.GetValue(0).ToString();
+                                var item =
+                                    new Item(String.Format(itemType, text.Substring(idx)), reader.GetValue(1).ToString());
+                                result.Add(item);
+                            }
+                        }
+                    }
                 }
                 catch(OleDbException ex)
                 {
                     var msg = new ErrorMessage("Error on Opening Db", ex);
                     Messenger.Default.Send(msg);
                 }
-                using (var cmd = new OleDbCommand(command, dbConnection))
-                {
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader != null && reader.Read())
-                        {
-                            var text = reader.GetValue(0).ToString();
-                            var item =
-                                new Item(String.Format(itemType, text.Substring(idx)), reader.GetValue(1).ToString());
-                            result.Add(item);
-                        }
-                    }
-                }
+                
             }
 
             return result;

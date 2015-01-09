@@ -39,8 +39,8 @@ namespace miRobotEditor.Languages
             DefaultPane = DefaultToolPane.Right;
             var instance = ServiceLocator.Current.GetInstance<MainViewModel>();
             _filename = instance.ActiveEditor.FilePath;
-            base.Width = 619;
-            base.Height = 506;
+            Width = 619;
+            Height = 506;
         }
 
         public ReadOnlyCollection<IVariable> ListItems

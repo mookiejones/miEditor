@@ -353,6 +353,7 @@ namespace miRobotEditor.Classes
                     {
                         if (!blockComment || text[0] == '*')
                         {
+                            // ReSharper disable once NegativeEqualityExpression
                             if (!doc.Text.StartsWith("//\t", StringComparison.Ordinal) && !(doc.Text == "//"))
                             {
                                 if (text[0] == '}')
@@ -488,7 +489,7 @@ namespace miRobotEditor.Classes
 
         private static bool IsSingleStatementKeyword(string keyword)
         {
-            bool result;
+
             switch (keyword)
             {
                 case "if":
@@ -498,11 +499,10 @@ namespace miRobotEditor.Classes
                 case "foreach":
                 case "using":
                 case "lock":
-                    result = true;
-                    return result;
+                    return true;
             }
-            result = false;
-            return result;
+
+            return false;
         }
 
         [Localizable(false)]

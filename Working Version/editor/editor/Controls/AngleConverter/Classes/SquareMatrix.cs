@@ -79,7 +79,7 @@ namespace miRobotEditor.Controls.AngleConverter.Classes
 
         public SquareMatrix Inverse()
         {
-            var matrix = base.Augment(Identity(Size));
+            var matrix = Augment(Identity(Size));
             matrix.MakeRowEchelon();
             var squareMatrix = new SquareMatrix(Size);
             var squareMatrix2 = new SquareMatrix(Size);
@@ -110,7 +110,7 @@ namespace miRobotEditor.Controls.AngleConverter.Classes
         public bool IsRotationMatrix()
         {
             bool result;
-            if (!base.IsNaN())
+            if (!IsNaN())
             {
                 if (Math.Abs(Determinant() - 1.0) > 0.001)
                 {
@@ -143,8 +143,8 @@ namespace miRobotEditor.Controls.AngleConverter.Classes
             {
                 throw new MatrixException("Unable to decompose matrix");
             }
-            l.SetColumn(0, base.GetColumn(0));
-            u.SetRow(0, base.GetRow(0));
+            l.SetColumn(0, GetColumn(0));
+            u.SetRow(0, GetRow(0));
             u.MultiplyRow(0, 1.0/base[0, 0]);
             for (var i = 1; i < Size; i++)
             {
@@ -185,12 +185,12 @@ namespace miRobotEditor.Controls.AngleConverter.Classes
         {
             var squareMatrix = new SquareMatrix(Size - 1);
             var num = 0;
-            for (var k = 0; k < base.Rows; k++)
+            for (var k = 0; k < Rows; k++)
             {
                 if (k != i)
                 {
                     var num2 = 0;
-                    for (var l = 0; l < base.Columns; l++)
+                    for (var l = 0; l < Columns; l++)
                     {
                         if (l != j)
                         {

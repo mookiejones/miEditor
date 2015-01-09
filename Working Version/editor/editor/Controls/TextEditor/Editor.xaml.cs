@@ -51,7 +51,8 @@ namespace miRobotEditor.Controls.TextEditor
         private const int LogicListFontSizeMax = 50;
         private const int LogicListFontSizeMin = 10;
 */
-        private const double Epsilon = 1E-08;
+        //TODO This should be used
+//        private const double Epsilon = 1E-08;
 
         #endregion Constants
 
@@ -122,7 +123,7 @@ namespace miRobotEditor.Controls.TextEditor
 
         private void ChangeCommandBindings()
         {
-            ICollection<CommandBinding> commandBindings = base.TextArea.DefaultInputHandler.Editing.CommandBindings;
+            ICollection<CommandBinding> commandBindings = TextArea.DefaultInputHandler.Editing.CommandBindings;
             foreach (CommandBinding current in commandBindings)
             {
                 if (current.Command == AvalonEditCommands.DeleteLine)
@@ -153,7 +154,7 @@ namespace miRobotEditor.Controls.TextEditor
             }
             finally
             {
-                this.InvokeModifiedChanged(false);
+                InvokeModifiedChanged(false);
             }
         }
 
@@ -1249,7 +1250,7 @@ namespace miRobotEditor.Controls.TextEditor
 
         private void TextEntered(object sender, TextCompositionEventArgs e)
         {
-            if (!base.IsReadOnly && e.Text.Length == 1)
+            if (!IsReadOnly && e.Text.Length == 1)
             {
                 var newChar = e.Text[0];
                 if (UseCodeCompletion)
@@ -1262,16 +1263,16 @@ namespace miRobotEditor.Controls.TextEditor
                 return;
             }
 
-            string wordBeforeCaret = this.GetWordBeforeCaret(this.GetWordParts());
+            var wordBeforeCaret = this.GetWordBeforeCaret(GetWordParts());
 
-            if (SnippetManager.HasSnippetsFor(wordBeforeCaret, this.DocumentType))
+            if (SnippetManager.HasSnippetsFor(wordBeforeCaret, DocumentType))
             {
-                insightWindow = new InsightWindow(base.TextArea)
+                insightWindow = new InsightWindow(TextArea)
                 {
                     Content = "Press tab to enter snippet",
                     Background = Brushes.Linen
                 };
-                this.insightWindow.Show();
+                insightWindow.Show();
                 return;
             }
             if (FileLanguage != null && !(FileLanguage is LanguageBase))
@@ -1557,7 +1558,7 @@ namespace miRobotEditor.Controls.TextEditor
 
         private void RegisterFoldTitles()
         {
-            if (!(DocumentViewModel.Instance.FileLanguage is LanguageBase) || !(Path.GetExtension(Filename) == ".xml"))
+            if (!(DocumentViewModel.Instance.FileLanguage is LanguageBase) || Path.GetExtension(Filename) != ".xml")
             {
                 foreach (var current in _foldingManager.AllFoldings)
                 {
@@ -2090,7 +2091,7 @@ namespace miRobotEditor.Controls.TextEditor
             if (Directory.Exists(targetPath))
             {
                 text = targetPath;
-                targetPath = Path.Combine(targetPath, FileExtended.GetName(sourcePath));
+                targetPath = Path.Combine(targetPath, GetName(sourcePath));
             }
             else
             {
@@ -2111,13 +2112,13 @@ namespace miRobotEditor.Controls.TextEditor
             for (var i = 0; i < files.Length; i++)
             {
                 var sourcePath = files[i];
-                FileExtended.CopyIfExisting(sourcePath, targetDirectory);
+                CopyIfExisting(sourcePath, targetDirectory);
             }
         }
 
         public static void DeleteIfExisting(string path)
         {
-            FileExtended.DeleteIfExisting(path, true);
+            DeleteIfExisting(path, true);
         }
 
         public static void DeleteIfExisting(string path, bool force)
@@ -2155,7 +2156,7 @@ namespace miRobotEditor.Controls.TextEditor
             for (var i = 0; i < files.Length; i++)
             {
                 var path = files[i];
-                FileExtended.DeleteIfExisting(path);
+                DeleteIfExisting(path);
             }
         }
 

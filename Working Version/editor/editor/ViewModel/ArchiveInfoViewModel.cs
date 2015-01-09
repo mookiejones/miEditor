@@ -66,8 +66,8 @@ namespace miRobotEditor.ViewModel
             RaisePropertyChanged("AnInVisibility");
             RaisePropertyChanged("AnOutVisibility");
             DefaultPane = DefaultToolPane.Right;
-            base.Width = 250;
-            base.Height = 600;
+            Width = 250;
+            Height = 600;
         }
 
         public Visibility DigInVisibility

@@ -235,7 +235,7 @@ namespace miRobotEditor.Controls.AngleConverter
 
         public double RotationAngle()
         {
-            return Math.Acos((base.Trace() - 1.0)/2.0)*180.0/3.1415926535897931;
+            return Math.Acos((Trace() - 1.0)/2.0)*180.0/3.1415926535897931;
         }
 
         public Vector3D RotationAxis()

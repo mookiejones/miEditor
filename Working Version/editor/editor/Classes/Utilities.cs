@@ -33,8 +33,6 @@ namespace miRobotEditor.Classes
 
         public static BitmapImage LoadBitmap(string fileName)
         {
-            BitmapImage result;
-
 #if DEBUG
             var file = new System.IO.FileInfo(fileName);
             if (!file.Exists)
@@ -49,7 +47,7 @@ namespace miRobotEditor.Classes
                     var fileInfo = new System.IO.FileInfo(fileName);
                     var bitmapImage = new BitmapImage(new Uri(fileInfo.FullName));
                     bitmapImage.Freeze();
-                    result = bitmapImage;
+                    var result = bitmapImage;
                     return result;
                 }
             }
@@ -59,8 +57,8 @@ namespace miRobotEditor.Classes
             catch (IOException)
             {
             }
-            result = null;
-            return result;
+
+            return null;
         }
     }
 }

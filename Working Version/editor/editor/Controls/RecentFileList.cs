@@ -92,7 +92,7 @@ namespace miRobotEditor.Controls
 
         private void HookFileMenu()
         {
-            var menuItem = base.Parent as MenuItem;
+            var menuItem = Parent as MenuItem;
             if (menuItem == null)
             {
                 throw new ApplicationException("Parent must be a MenuItem");
@@ -755,9 +755,9 @@ namespace miRobotEditor.Controls
                                 {
                                     goto IL_13E;
                                 }
-                                if (!(name == "RecentFiles"))
+                                if (name != "RecentFiles")
                                 {
-                                    if (!(name == "RecentFile"))
+                                    if (name != "RecentFile")
                                     {
                                         goto IL_13E;
                                     }

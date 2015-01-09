@@ -11,17 +11,17 @@ namespace miRobotEditor.Classes
 {
     public abstract class DocumentBase : FileViewModel, IEditorDocument
     {
-        public DocumentBase()
+        protected DocumentBase()
         {
         }
 
-        public DocumentBase(string filePath) : base(filePath)
+        protected DocumentBase(string filePath) : base(filePath)
         {
             ContentId = filePath;
             InitializeControl();
         }
 
-        public DocumentBase(string filePath, AbstractLanguageClass language) : base(filePath)
+        protected DocumentBase(string filePath, AbstractLanguageClass language) : base(filePath)
         {
             ContentId = filePath;
             FileLanguage = language;

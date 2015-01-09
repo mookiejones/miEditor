@@ -517,7 +517,7 @@ namespace miRobotEditor.Controls.AngleConverter.Classes
 
         public new Vector3D Normalised()
         {
-            return new Vector3D(this/base.Length());
+            return new Vector3D(this/Length());
         }
 
         public static Vector3D operator +(Vector3D v1, Vector3D v2)

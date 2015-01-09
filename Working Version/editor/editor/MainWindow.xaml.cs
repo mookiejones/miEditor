@@ -152,7 +152,8 @@ namespace miRobotEditor
             SaveLayout();
             var instance = ServiceLocator.Current.GetInstance<MainViewModel>();
             instance.IsClosing = true;
-            App.Application.Shutdown();
+            if (App.Application!=null)
+                App.Application.Shutdown();
         }
 
         private void WindowLoaded(object sender, RoutedEventArgs e)

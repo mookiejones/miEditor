@@ -187,7 +187,7 @@ namespace miRobotEditor.Languages
         {
             get
             {
-                return new Regex("DECL STRUC|^STRUC\\s([\\w\\d]+\\s*)", RegexOptions.IgnoreCase | RegexOptions.Multiline);
+                return new Regex("DECL STRUC|[^|\n]STRUC\\s([\\w\\d]+\\s*)", RegexOptions.IgnoreCase | RegexOptions.Multiline);
             }
         }
 

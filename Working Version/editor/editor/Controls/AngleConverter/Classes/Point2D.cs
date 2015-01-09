@@ -50,7 +50,7 @@ namespace miRobotEditor.Controls.AngleConverter.Classes
         public override bool Equals(object obj)
         {
             return !ReferenceEquals(null, obj) &&
-                   (ReferenceEquals(this, obj) || (obj.GetType() == base.GetType() && Equals((Point2D) obj)));
+                   (ReferenceEquals(this, obj) || (obj.GetType() == GetType() && Equals((Point2D) obj)));
         }
 
         public override int GetHashCode()

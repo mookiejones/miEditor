@@ -72,14 +72,14 @@ namespace miRobotEditor.Controls
 
         public ExtendedGridSplitter()
         {
-            base.DefaultStyleKey = typeof (ExtendedGridSplitter);
-            base.HorizontalAlignment = HorizontalAlignment.Stretch;
-            base.HorizontalContentAlignment = HorizontalAlignment.Stretch;
-            base.VerticalAlignment = VerticalAlignment.Center;
-            base.VerticalContentAlignment = VerticalAlignment.Stretch;
-            base.Height = 20.0;
+            DefaultStyleKey = typeof (ExtendedGridSplitter);
+            HorizontalAlignment = HorizontalAlignment.Stretch;
+            HorizontalContentAlignment = HorizontalAlignment.Stretch;
+            VerticalAlignment = VerticalAlignment.Center;
+            VerticalContentAlignment = VerticalAlignment.Stretch;
+            Height = 20.0;
             CollapseMode = GridSplitterCollapseMode.Previous;
-            base.Loaded += delegate
+            Loaded += delegate
             {
                 Collapse();
                 IsAnimated = true;

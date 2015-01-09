@@ -29,7 +29,7 @@ namespace miRobotEditor.Controls.TextEditor.Snippets
                         goto IL_170;
                     }
                 }
-                foreach (ICompletionData current in SnippetManager.GetCompletionDataForExtension(extension))
+                foreach (var current in SnippetManager.GetCompletionDataForExtension(extension))
                 {
                     yield return current;
                 }

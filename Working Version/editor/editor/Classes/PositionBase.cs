@@ -34,20 +34,11 @@ namespace miRobotEditor.Classes
             try
             {
                 _values = new ObservableCollection<PositionValue>();
-                var array = RawValue.Split(new[]
-                {
-                    '='
-                });
-                var source = array[1].Substring(1, array[1].Length - 2).Split(new[]
-                {
-                    ','
-                });
+                var array = RawValue.Split('=');
+                var source = array[1].Substring(1, array[1].Length - 2).Split(',');
                 foreach (var current in
                     from s in source
-                    select s.Split(new[]
-                    {
-                        ' '
-                    }))
+                    select s.Split(' '))
                 {
                     _values.Add(new PositionValue
                     {
@@ -69,7 +60,7 @@ namespace miRobotEditor.Classes
             try
             {
                 text = PositionalValues.Aggregate(text,
-                    (string current, PositionValue v) => current + string.Format("{0} {1},", v.Name, v.Value));
+                    (current, v) => current + string.Format("{0} {1},", v.Name, v.Value));
                 result = text.Substring(0, text.Length - 1);
             }
             catch
@@ -87,14 +78,22 @@ namespace miRobotEditor.Classes
         private string ConvertFromHex(string value)
         {
             var value2 = double.Parse(value.Substring(1, value.Length - 2), NumberStyles.HexNumber);
-            return Convert.ToString(value2);
+            return Convert.ToString(value2, CultureInfo.InvariantCulture);
         }
 
+        /// <summary>
+        /// Function to test if value is numeric
+        /// <remarks>Value will fail within try/catch if not numeric</remarks>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         private bool IsNumeric(string value)
         {
             bool result;
             try
             {
+
+                // ReSharper disable once UnusedVariable
                 var num = Convert.ToDouble(value);
                 result = true;
             }

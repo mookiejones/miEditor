@@ -100,7 +100,7 @@ namespace miRobotEditor.Controls.TextEditor.Snippets
                 }
                 else
                 {
-                    if (xElement.Elements("CodeSnippet").Count<XElement>() == 0)
+                    if (!xElement.Elements("CodeSnippet").Any())
                     {
                         result = false;
                     }

@@ -1,17 +1,4 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Messaging;
-using ICSharpCode.AvalonEdit.CodeCompletion;
-using ICSharpCode.AvalonEdit.Document;
-using ICSharpCode.AvalonEdit.Folding;
-using Microsoft.Practices.ServiceLocation;
-using miRobotEditor.Classes;
-using miRobotEditor.Controls.TextEditor;
-using miRobotEditor.Enums;
-using miRobotEditor.Interfaces;
-using miRobotEditor.Languages;
-using miRobotEditor.Messages;
-using miRobotEditor.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -23,6 +10,19 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
+using ICSharpCode.AvalonEdit.CodeCompletion;
+using ICSharpCode.AvalonEdit.Document;
+using ICSharpCode.AvalonEdit.Folding;
+using miRobotEditor.Classes;
+using miRobotEditor.Controls.TextEditor;
+using miRobotEditor.Enums;
+using miRobotEditor.Interfaces;
+using miRobotEditor.Languages;
+using miRobotEditor.Messages;
+using miRobotEditor.ViewModel;
+using Microsoft.Practices.ServiceLocation;
 using FileInfo = System.IO.FileInfo;
 
 namespace miRobotEditor.Abstract
@@ -58,12 +58,12 @@ namespace miRobotEditor.Abstract
         private int _bwFilesMin;
         private int _bwProgress;
         private Visibility _bwProgressVisibility = Visibility.Collapsed;
-        private List<IVariable> _fields = new List<IVariable>();
+        private readonly List<IVariable> _fields = new List<IVariable>();
         private string _filename = string.Empty;
-        private List<IVariable> _functions = new List<IVariable>();
+        private readonly List<IVariable> _functions = new List<IVariable>();
         private IOViewModel _ioModel;
         private string _kukaCon;
-        private List<IVariable> _positions = new List<IVariable>();
+        private readonly List<IVariable> _positions = new List<IVariable>();
         private MenuItem _robotMenuItems;
         private bool _rootFound;
         private string _rootName = string.Empty;
@@ -76,7 +76,7 @@ namespace miRobotEditor.Abstract
             Instance = this;
         }
 
-        private string flename;
+        private readonly string flename;
 
         protected virtual void Initialize()
         {
@@ -121,7 +121,10 @@ namespace miRobotEditor.Abstract
 
         protected AbstractLanguageClass(string filename)
         {
+
             flename = filename;
+            
+            //FIXME Need to resolve this
             Initialize(filename);
         }
 
@@ -167,11 +170,10 @@ namespace miRobotEditor.Abstract
             get { return _robotMenuItems; }
             set
             {
-                if (_robotMenuItems != value)
-                {
-                    _robotMenuItems = value;
-                    RaisePropertyChanged("RobotMenuItems");
-                }
+                if (Equals(_robotMenuItems, value)) return;
+
+                _robotMenuItems = value;
+                RaisePropertyChanged("RobotMenuItems");
             }
         }
 
@@ -219,7 +221,7 @@ namespace miRobotEditor.Abstract
 
         #region Files
 
-        private ObservableCollection<FileInfo> _files = new ObservableCollection<FileInfo>();
+        private readonly ObservableCollection<FileInfo> _files = new ObservableCollection<FileInfo>();
 
 #pragma warning disable 649
         private readonly ReadOnlyObservableCollection<FileInfo> _readOnlyFiles;
@@ -412,6 +414,7 @@ namespace miRobotEditor.Abstract
 
         internal abstract string FoldTitle(FoldingSection section, TextDocument doc);
 
+        //TODO Need to Create Correct implementation to allow MenuItems to be added
         private MenuItem GetMenuItems()
         {
             return new MenuItem();
@@ -556,14 +559,13 @@ namespace miRobotEditor.Abstract
             var stack = new Stack<int>();
             var textDocument = document as TextDocument;
             endFold = endFold.ToLower();
-            var num = 0;
             if (textDocument != null)
             {
                 foreach (var current in textDocument.Lines)
                 {
                     var lineByNumber = textDocument.GetLineByNumber(current.LineNumber);
                     var text = textDocument.GetText(lineByNumber.Offset, lineByNumber.Length).ToLower();
-                    var text2 = text.TrimStart(new char[0]);
+                    var text2 = text.TrimStart();
                     try
                     {
                         if (IsValidFold(text, startFold, endFold))
@@ -605,7 +607,7 @@ namespace miRobotEditor.Abstract
                                 }
                                 else
                                 {
-                                    num++;
+                                    //num++;
                                 }
                             }
                         }
@@ -645,6 +647,7 @@ namespace miRobotEditor.Abstract
             return result;
         }
 
+        // ReSharper disable once UnusedParameter.Local
         private string ShiftProgram(Editor doc, ShiftViewModel shift)
         {
             var stopwatch = new Stopwatch();
@@ -757,7 +760,7 @@ namespace miRobotEditor.Abstract
         private void GetVariables()
         {
             var task = GetVariablesAsync();
-            task.ContinueWith((r) =>
+            task.ContinueWith(r =>
             {
                 _enums.AddRange(r.Result.Enums);
                 _fields.AddRange(r.Result.Fields);
@@ -789,21 +792,22 @@ namespace miRobotEditor.Abstract
         private VariableMembers GetVariables(IEnumerable<FileInfo> files)
         {
             var variableMembers = new VariableMembers();
-            var num = 0;
-            var validFiles = from file in files
-                             where IsFileValid(file)
-                             select file;
 
-            var results = from file in validFiles
-                          select GetVariableMembers(file.FullName).ContinueWith((var) =>
-                          {
-                              variableMembers.Functions.AddRange(var.Result.Structures.ToList());
-                              variableMembers.Structures.AddRange(var.Result.Structures.ToList());
-                              variableMembers.Fields.AddRange(var.Result.Fields.ToList());
-                              variableMembers.Signals.AddRange(var.Result.Signals.ToList());
-                              variableMembers.Enums.AddRange(var.Result.Enums.ToList());
-                              variableMembers.Positions.AddRange(var.Result.Positions.ToList());
-                          });
+
+            // Changed all of this to a single statement
+            var results = 
+                from file in files
+                             where IsFileValid(file)
+                select GetVariableMembers(file.FullName).ContinueWith(var =>
+                {
+                    variableMembers.Functions.AddRange(var.Result.Structures.ToList());
+                    variableMembers.Structures.AddRange(var.Result.Structures.ToList());
+                    variableMembers.Fields.AddRange(var.Result.Fields.ToList());
+                    variableMembers.Signals.AddRange(var.Result.Signals.ToList());
+                    variableMembers.Enums.AddRange(var.Result.Enums.ToList());
+                    variableMembers.Positions.AddRange(var.Result.Positions.ToList());
+                });
+         
 
             Task.WaitAll(results.ToArray());
 
@@ -887,6 +891,12 @@ namespace miRobotEditor.Abstract
                 var match = matchstring.Match(input);
                 while (match.Success)
                 {
+
+                    if (match != null && match.Groups[2] != null)
+                    {
+                        var v = match.Groups[2].ToString();
+                    }
+                      
                     list.Add(new Variable
                     {
                         Declaration = match.Groups[0].ToString(),

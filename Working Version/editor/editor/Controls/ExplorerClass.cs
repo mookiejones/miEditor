@@ -27,7 +27,7 @@ namespace miRobotEditor.Controls
 
         public ExplorerClass()
         {
-            base.HideSelection = false;
+            HideSelection = false;
         }
 
         // ReSharper restore InconsistentNaming
@@ -82,7 +82,7 @@ namespace miRobotEditor.Controls
 
         public void ShowTree()
         {
-            base.Nodes.Clear();
+            Nodes.Clear();
             try
             {
                 var drives = DriveInfo.GetDrives();
@@ -227,17 +227,18 @@ namespace miRobotEditor.Controls
                     {
                         var text2 = extension.ToLower();
                         var text3 = text2;
+                        // ReSharper disable once ConditionIsAlwaysTrueOrFalse
                         if (text3 == null)
                         {
                             goto IL_260;
                         }
-                        if (!(text3 == ".src"))
+                        if (text3 != ".src")
                         {
-                            if (!(text3 == ".dat"))
+                            if (text3 != ".dat")
                             {
-                                if (!(text3 == ".sub"))
+                                if (text3 != ".sub")
                                 {
-                                    if (!(text3 == ".zip"))
+                                    if (text3 != ".zip")
                                     {
                                         goto IL_260;
                                     }
@@ -282,11 +283,11 @@ namespace miRobotEditor.Controls
         protected override void OnBeforeExpand(TreeViewCancelEventArgs e)
         {
             var node = e.Node;
-            base.BeginUpdate();
+            BeginUpdate();
             node.Nodes.Clear();
             var root = e.Node.Tag.ToString();
             FillTreeNode(node, root);
-            base.EndUpdate();
+            EndUpdate();
             base.OnBeforeExpand(e);
         }
 

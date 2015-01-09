@@ -29,7 +29,7 @@ namespace miRobotEditor.ViewModel
         {
             InputItems.ItemsChanged += (s, e) => Convert();
             OutputItems.ItemsChanged += (s, e) => Convert();
-            base.ContentId = "AngleConverterTool";
+            ContentId = "AngleConverterTool";
             DefaultPane = DefaultToolPane.Right;
         }
 
