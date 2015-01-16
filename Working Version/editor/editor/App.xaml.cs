@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Forms;
 using System.Windows.Shell;
 using System.Windows.Threading;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
-using Microsoft.Practices.ServiceLocation;
 using miRobotEditor.Classes;
 using miRobotEditor.Enums;
 using miRobotEditor.Interfaces;
 using miRobotEditor.Messages;
 using miRobotEditor.ViewModel;
-using miRobotEditor.Windows;
-using MessageBox = System.Windows.MessageBox;
+using Microsoft.Practices.ServiceLocation;
 
 namespace miRobotEditor
 {
@@ -71,20 +67,16 @@ namespace miRobotEditor
             e.Handled = true;
         }
 
-        protected override void OnExit(ExitEventArgs e)
-        {
-            base.OnExit(e);
-        }
-
         [Localizable(false)]
         protected override void OnStartup(StartupEventArgs e)
         {
-            Splasher.Splash = new SplashScreenWindow();
-            Splasher.ShowSplash();
+
+//            Splasher.Splash = new SplashScreenWindow();
+ //           Splasher.ShowSplash();
 
 
 #if DEBUG
-            Control.CheckForIllegalCrossThreadCalls = true;
+//            Control.CheckForIllegalCrossThreadCalls = true;
 #endif
             if (!CheckEnvironment())
                 return;
@@ -113,11 +105,9 @@ namespace miRobotEditor
             {
                 foreach (var v in e.Args)
                 {
+                    Console.WriteLine(v);
                 }
-                Debugger.Break();
-                MessageBox.Show(e.ToString());
-                MessageBox.Show("You have the latest version.");
-                Shutdown();
+            
             }
 
             var task = new JumpTask

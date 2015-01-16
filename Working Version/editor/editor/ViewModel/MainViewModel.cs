@@ -753,7 +753,7 @@ namespace miRobotEditor.ViewModel
             var directoryName = Path.GetDirectoryName(ActiveEditor.FilePath);
             var openFileDialog = new OpenFileDialog
             {
-                Filter = "Allfiles (*.*)|*.*",
+                Filter = Global.Default_Filter,
                 Multiselect = true,
                 FilterIndex = 1,
                 InitialDirectory = directoryName

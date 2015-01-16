@@ -10,6 +10,9 @@ namespace miRobotEditor.Classes
 {
     public static class Global
     {
+
+
+        public const string Default_Filter = "Kuka Files (*.src;*.dat)|*.src;*.dat|All Files (*.*)|*.*";
         #region Image Paths
 
         public const string DockConfigPath = "dockConfig.xml";

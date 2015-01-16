@@ -8,7 +8,7 @@
     xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
     xmlns:selectors="clr-namespace:miRobotEditor.Selectors"
     xmlns:classes="clr-namespace:miRobotEditor.Classes"
-    xmlns:ViewModel="clr-namespace:miRobotEditor.ViewModel" x:Class="miRobotEditor.MainWindow" x:Name="MetroWindow"
+    xmlns:ViewModel="clr-namespace:miRobotEditor.ViewModel" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="miRobotEditor.MainWindow" x:Name="MetroWindow"
     SnapsToDevicePixels="True"
     WindowState="Maximized"
     TitleForeground="#FF000000"
@@ -80,7 +80,7 @@
                     <Setter Property="Width" Value="16" />
                 </Style>
                 <Style x:Key="{x:Type MenuItem}" TargetType="{x:Type MenuItem}"
-                       BasedOn="{StaticResource {x:Type MenuItem}}">
+					BasedOn="{StaticResource {x:Type MenuItem}}">
                     <Style.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="10" />
@@ -95,7 +95,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="_Open" DataContext="{Binding OpenFileCommand, Mode=OneWay}"
-                          Command="{Binding Mode=OneWay}">
+					Command="{Binding Mode=OneWay}">
                     <MenuItem.Icon>
                         <Image Source="/Images/folder_open.png" />
                     </MenuItem.Icon>
@@ -124,7 +124,7 @@
                         <Image Source="/Images/resources-print_preview.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="_Close" Command="{Binding CloseCommand}">
+                <MenuItem Header="_Close" Command="{Binding CloseCommand,Mode=OneWay}">
                     <MenuItem.Icon>
                         <Image Source="/Images/close.png" />
                     </MenuItem.Icon>
@@ -170,11 +170,11 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="_Delete" Command="ApplicationCommands.Delete" ToolTip="Deletes the current line."
-                          CommandTarget="{Binding ActiveEditor.TextBox}" />
+					CommandTarget="{Binding ActiveEditor.TextBox}" />
                 <MenuItem Header="Delete _Line" Command="ae:AvalonEditCommands.DeleteLine"
-                          ToolTip="Deletes the current line." CommandTarget="{Binding ActiveEditor.TextBox}" />
+					ToolTip="Deletes the current line." CommandTarget="{Binding ActiveEditor.TextBox}" />
                 <MenuItem Header="Select _All" Command="ApplicationCommands.SelectAll"
-                          ToolTip="Select All of Document." CommandTarget="{Binding ActiveEditor.TextBox}">
+					ToolTip="Select All of Document." CommandTarget="{Binding ActiveEditor.TextBox}">
                     <MenuItem.Icon>
                         <Image Source="/Images/resources-select_all.png" />
                     </MenuItem.Icon>
@@ -188,41 +188,41 @@
                 <Separator />
                 <MenuItem x:Name="Formatting" Header="Formatting">
                     <MenuItem Header="View Whitespace" IsCheckable="True"
-                              IsChecked="{Binding ShowSpaces, Source={x:Static classes:EditorOptions.Instance}}" />
+						IsChecked="{Binding ShowSpaces, Source={x:Static classes:EditorOptions.Instance}}" />
                     <MenuItem Header="Wordwrap"
-                              IsChecked="{Binding WrapWords, Source={x:Static classes:EditorOptions.Instance}}" />
+						IsChecked="{Binding WrapWords, Source={x:Static classes:EditorOptions.Instance}}" />
                     <Separator />
                     <MenuItem Header="Toggle Comment" />
                     <Separator />
                     <MenuItem Header="Increase Line Indent" />
                     <MenuItem Header="Decrease Line Indent" />
                     <MenuItem Header="Remove Leading Whitespace"
-                              Command="ae:AvalonEditCommands.RemoveLeadingWhitespace"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						Command="ae:AvalonEditCommands.RemoveLeadingWhitespace"
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <MenuItem Header="Remove Trailing Whitespace"
-                              Command="ae:AvalonEditCommands.RemoveTrailingWhitespace"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						Command="ae:AvalonEditCommands.RemoveTrailingWhitespace"
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <MenuItem Header="To Uppercase" Command="ae:AvalonEditCommands.ConvertToUppercase"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <MenuItem Header="To Lowercase" Command="ae:AvalonEditCommands.ConvertToLowercase"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <MenuItem Header="Capitalize" Command="ae:AvalonEditCommands.ConvertToTitleCase"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <MenuItem Header="Invert Case" Command="ae:AvalonEditCommands.InvertCase"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <Separator />
                     <MenuItem Header="Tabs to Spaces" Command="ae:AvalonEditCommands.ConvertTabsToSpaces"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <MenuItem Header="Spaces to Tabs" Command="ae:AvalonEditCommands.ConvertSpacesToTabs"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <MenuItem Header="Leading tabs to spaces"
-                              Command="ae:AvalonEditCommands.ConvertLeadingTabsToSpaces"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						Command="ae:AvalonEditCommands.ConvertLeadingTabsToSpaces"
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <MenuItem Header="Leading spaces to tabs"
-                              Command="ae:AvalonEditCommands.ConvertLeadingSpacesToTabs"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						Command="ae:AvalonEditCommands.ConvertLeadingSpacesToTabs"
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <MenuItem Header="Indent Selection" Command="ae:AvalonEditCommands.IndentSelection"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                 </MenuItem>
                 <Separator />
                 <MenuItem Header="Find in Files" Command="{Binding ShowFindReplaceCommand}" />
@@ -230,22 +230,22 @@
                 <Separator />
                 <MenuItem Header="Find and Replace">
                     <MenuItem Header="Find" Command="ApplicationCommands.Find"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <MenuItem Header="Find Next" Command="ae:SearchCommands.FindNext"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <MenuItem Header="Find Previous" Command="ae:SearchCommands.FindPrevious"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <MenuItem Header="Cancel Search" Command="ae:SearchCommands.CloseSearchPanel"
-                              CommandTarget="{Binding ActiveEditor.TextBox}" />
+						CommandTarget="{Binding ActiveEditor.TextBox}" />
                     <MenuItem Header="Find and Replace" />
                 </MenuItem>
                 <Separator />
                 <MenuItem Header="Go To..." CommandTarget="{Binding ActiveEditor.TextBox}" />
                 <MenuItem Header="Folding">
                     <MenuItem Header="_Open All Folds"
-                              Command="{Binding ActiveEditor.TextBox.OpenAllFoldsCommand, Mode=OneWay}" />
+						Command="{Binding ActiveEditor.TextBox.OpenAllFoldsCommand, Mode=OneWay}" />
                     <MenuItem Header="_Close All Folds"
-                              Command="{Binding ActiveEditor.TextBox.CloseAllFoldsCommand, Mode=OneWay}" />
+						Command="{Binding ActiveEditor.TextBox.CloseAllFoldsCommand, Mode=OneWay}" />
                     <MenuItem Header="Toggle Current Fold" Command="{Binding ActiveEditor.TextBox.ToggleFoldsCommand}" />
                     <MenuItem Header="Toggle All Folds" Command="{Binding ActiveEditor.TextBox.ToggleAllFoldsCommand}" />
                 </MenuItem>
@@ -255,10 +255,10 @@
                     <MenuItem Header="Accents">
                         <MenuItem.Resources>
                             <Style x:Key="{x:Type MenuItem}" TargetType="{x:Type MenuItem}"
-                                   BasedOn="{StaticResource {x:Type MenuItem}}">
+								BasedOn="{StaticResource {x:Type MenuItem}}">
                                 <Setter Property="Command" Value="{Binding ChangeAccentCommand}" />
                                 <Setter Property="CommandParameter"
-                                        Value="{Binding Header, RelativeSource={RelativeSource Self}}" />
+									Value="{Binding Header, RelativeSource={RelativeSource Self}}" />
                             </Style>
                         </MenuItem.Resources>
                         <MenuItem Header="Red" />
@@ -269,15 +269,15 @@
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="View Whitespace" IsCheckable="True"
-                          IsChecked="{Binding ShowSpaces, BindsDirectlyToSource=True, Source={x:Static classes:EditorOptions.Instance}}" />
+					IsChecked="{Binding ShowSpaces, BindsDirectlyToSource=True, Source={x:Static classes:EditorOptions.Instance}}" />
                 <MenuItem Header="View EOL" IsCheckable="True"
-                          IsChecked="{Binding ShowEndOfLine, Source={x:Static classes:EditorOptions.Instance}}" />
+					IsChecked="{Binding ShowEndOfLine, Source={x:Static classes:EditorOptions.Instance}}" />
                 <MenuItem Header="View Tabs" IsCheckable="True"
-                          IsChecked="{Binding ShowTabs, Source={x:Static classes:EditorOptions.Instance}}" />
+					IsChecked="{Binding ShowTabs, Source={x:Static classes:EditorOptions.Instance}}" />
                 <MenuItem Header="Wordwrap" IsCheckable="True"
-                          IsChecked="{Binding WrapWords, Source={x:Static classes:EditorOptions.Instance}}" />
+					IsChecked="{Binding WrapWords, Source={x:Static classes:EditorOptions.Instance}}" />
                 <MenuItem Header="Line Numbers" IsCheckable="True"
-                          IsChecked="{Binding ShowLineNumbers, BindsDirectlyToSource=True, Source={x:Static classes:EditorOptions.Instance}}">
+					IsChecked="{Binding ShowLineNumbers, BindsDirectlyToSource=True, Source={x:Static classes:EditorOptions.Instance}}">
                     <MenuItem.Icon>
                         <Image Source="/Images/resources-line_numbers.png" />
                     </MenuItem.Icon>
@@ -292,19 +292,19 @@
             </MenuItem>
             <MenuItem Header="Tools">
                 <MenuItem Header="Angle Converter" CommandParameter="Angle Converter"
-                          Command="{Binding AddToolCommand}" />
+					Command="{Binding AddToolCommand}" />
             </MenuItem>
             <MenuItem Header="Window">
                 <MenuItem Header="Windows">
                     <MenuItem Header="Functions" CommandParameter="Functions" Command="{Binding AddToolCommand}" />
                     <MenuItem Header="Object Browser" CommandParameter="Object Browser"
-                              Command="{Binding AddToolCommand}" />
+						Command="{Binding AddToolCommand}" />
                     <MenuItem Header="Explorer" CommandParameter="Explorer" Command="{Binding AddToolCommand}" />
                     <MenuItem Header="Angle Converter" CommandParameter="Angle Converter"
-                              Command="{Binding AddToolCommand}" />
+						Command="{Binding AddToolCommand}" />
                     <MenuItem Header="Notes" CommandParameter="Notes" Command="{Binding AddToolCommand}" />
                     <MenuItem Header="Output Window" CommandParameter="Output Window"
-                              Command="{Binding AddToolCommand}" />
+						Command="{Binding AddToolCommand}" />
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Robot" ItemsSource="{Binding ActiveEditor.FileLanguage}">
@@ -356,7 +356,7 @@
                     </Style.Triggers>
                 </Style>
                 <Style x:Key="{x:Type ToggleButton}" TargetType="{x:Type ToggleButton}"
-                       BasedOn="{StaticResource {x:Type ToggleButton}}">
+					BasedOn="{StaticResource {x:Type ToggleButton}}">
                     <Setter Property="Height" Value="34" />
                     <Setter Property="Width" Value="34" />
                     <Setter Property="Margin" Value="5" />
@@ -383,8 +383,8 @@
                     <Setter Property="Width" Value="24" />
                     <Style.Triggers>
                         <DataTrigger
-                            Binding="{Binding IsEnabled, RelativeSource={RelativeSource AncestorLevel=1, AncestorType={x:Type ButtonBase}}}"
-                            Value="False">
+							Binding="{Binding IsEnabled, RelativeSource={RelativeSource AncestorLevel=1, AncestorType={x:Type ButtonBase}}}"
+							Value="False">
                             <Setter Property="Opacity" Value="0.30" />
                         </DataTrigger>
                     </Style.Triggers>
@@ -418,9 +418,9 @@
                 <Image Source="/Images/resources-Cut.png" />
             </Button>
             <Button Content="{StaticResource CopyImage}"
-                    Command="{Binding ActiveEditor.TextBox.CopyCommand, Mode=OneWay}" />
+				Command="{Binding ActiveEditor.TextBox.CopyCommand, Mode=OneWay}" />
             <Button Content="{StaticResource PasteImage}"
-                    Command="{Binding ActiveEditor.TextBox.PasteCommand, Mode=OneWay}" />
+				Command="{Binding ActiveEditor.TextBox.PasteCommand, Mode=OneWay}" />
             <ToggleButton IsChecked="{Binding EnableFolding, Source={x:Static classes:EditorOptions.Instance}}" />
             <Button ToolTip="Expand Folds" Command="{Binding ActiveEditor.TextBox.OpenAllFoldsCommand, Mode=OneWay}">
                 <Image Source="/Images/resources-expandfolds.png" />
@@ -429,7 +429,7 @@
                 <Image Source="/Images/collapsefolds.png" />
             </Button>
             <Button ToolTip="Decrease Indent" CommandParameter="false"
-                    Command="{Binding ActiveEditor.TextBox.ChangeIndentCommand}">
+				Command="{Binding ActiveEditor.TextBox.ChangeIndentCommand}">
                 <Image Source="/Images/resources-increaseindent.png" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <ScaleTransform ScaleX="-1" />
@@ -437,35 +437,33 @@
                 </Image>
             </Button>
             <Button ToolTip="Increase Indent" CommandParameter="true"
-                    Command="{Binding ActiveEditor.TextBox.ChangeIndentCommand}">
+				Command="{Binding ActiveEditor.TextBox.ChangeIndentCommand}">
                 <Image Source="/Images/resources-increaseindent.png" />
             </Button>
         </StackPanel>
         <xcad:DockingManager
-            x:Name="DockManager"
-            Background="#00FFFFFF"
-            Grid.Row="2"
-
-
-            AnchorablesSource="{Binding Main.Tools}"
-            DocumentsSource="{Binding Main.Files}"
-            ActiveContent="{Binding Main.ActiveEditor, Converter={StaticResource ActiveEditorConverter}, Mode=TwoWay}">
+			x:Name="DockManager"
+			Background="{StaticResource DockingManagerBrush}"
+			Grid.Row="2"
+			AnchorablesSource="{Binding Main.Tools}"
+			DocumentsSource="{Binding Main.Files}"
+			ActiveContent="{Binding Main.ActiveEditor, Converter={StaticResource ActiveEditorConverter}, Mode=TwoWay}">
             <xcad:DockingManager.LayoutUpdateStrategy>
                 <classes:LayoutInitializer />
             </xcad:DockingManager.LayoutUpdateStrategy>
             <xcad:DockingManager.LayoutItemTemplateSelector>
                 <selectors:PanesTemplateSelector AngleConverterTemplate="{StaticResource AngleConverterTemplate}"
-                                                 NotesTemplate="{StaticResource Notes}"
-                                                 FunctionTemplate="{StaticResource Functions}"
-                                                 LocalVariablesTemplate="{StaticResource {DataTemplateKey {x:Type ViewModel:LocalVariablesViewModel}}}"
-                                                 ObjectBrowserTemplate="{StaticResource ObjectBrowser}"
-                                                 KukaTemplate="{StaticResource Kuka}"
-                                                 FileTemplate="{StaticResource Document}"
-                                                 MessageTemplate="{StaticResource MessageTemplate}" />
+					NotesTemplate="{StaticResource Notes}"
+					FunctionTemplate="{StaticResource Functions}"
+					LocalVariablesTemplate="{StaticResource {DataTemplateKey {x:Type ViewModel:LocalVariablesViewModel}}}"
+					ObjectBrowserTemplate="{StaticResource ObjectBrowser}"
+					KukaTemplate="{StaticResource Kuka}"
+					FileTemplate="{StaticResource Document}"
+					MessageTemplate="{StaticResource MessageTemplate}" />
             </xcad:DockingManager.LayoutItemTemplateSelector>
             <xcad:DockingManager.LayoutItemContainerStyleSelector>
                 <selectors:PanesStyleSelector FileStyle="{StaticResource FileStyle}"
-                                              ToolStyle="{StaticResource ToolStyle}" />
+					ToolStyle="{StaticResource ToolStyle}" />
             </xcad:DockingManager.LayoutItemContainerStyleSelector>
             <xcad:LayoutRoot>
                 <xcad:LayoutPanel Orientation="Vertical">
@@ -480,43 +478,25 @@
                 </xcad:LayoutPanel>
             </xcad:LayoutRoot>
         </xcad:DockingManager>
-        <StatusBar Grid.Row="3" DataContext="{Binding StatusBar, Mode=OneWay}">
-            <StatusBar.Resources>
-                <Style x:Key="{x:Type StatusBarItem}" TargetType="{x:Type StatusBarItem}">
-                    <Setter Property="FontWeight" Value="Normal" />
-                    <Style.Triggers>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="FontWeight" Value="ExtraLight" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-                <Style x:Key="{x:Type TextBlock}" TargetType="{x:Type TextBlock}">
-                    <Setter Property="FontWeight" Value="Normal" />
-                    <Style.Triggers>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="TextBlock.FontWeight" Value="ExtraLight" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </StatusBar.Resources>
+        <StatusBar Grid.Row="3" DataContext="{Binding StatusBar, Mode=OneWay}">          
             <StatusBarItem Grid.Column="2" ToolTip="Current Line"
-                           DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
-                           Content="{Binding ActiveEditor.TextBox.Line, StringFormat=Line \{0\}}"
-                           ContentStringFormat="{Binding ActiveEditor.TextBox.Line, StringFormat=Line \{0\}}" />
+				DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
+				Content="{Binding ActiveEditor.TextBox.Line, StringFormat=Line \{0\}}"
+				ContentStringFormat="{Binding ActiveEditor.TextBox.Line, StringFormat=Line \{0\}}" />
             <StatusBarItem Grid.Column="3" ToolTip="Column Position"
-                           DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
-                           Content="{Binding ActiveEditor.TextBox.Column, StringFormat=Col \{0\}}"
-                           ContentStringFormat="{Binding ActiveEditor.TextBox.Column, StringFormat=Col \{0\}}" />
+				DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
+				Content="{Binding ActiveEditor.TextBox.Column, StringFormat=Col \{0\}}"
+				ContentStringFormat="{Binding ActiveEditor.TextBox.Column, StringFormat=Col \{0\}}" />
             <StatusBarItem Grid.Column="4" ToolTip="Offset Position of Caret"
-                           DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
-                           Content="{Binding ActiveEditor.TextBox.Offset, StringFormat=Offset \{0\}}"
-                           ContentStringFormat="{Binding ActiveEditor.TextBox.Offset, StringFormat=Offset \{0\}}" />
+				DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
+				Content="{Binding ActiveEditor.TextBox.Offset, StringFormat=Offset \{0\}}"
+				ContentStringFormat="{Binding ActiveEditor.TextBox.Offset, StringFormat=Offset \{0\}}" />
             <StatusBarItem Grid.Column="5" ToolTip="Robot Type"
-                           DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
-                           Content="{Binding ActiveEditor.FileLanguage.Name}" />
+				DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
+				Content="{Binding ActiveEditor.FileLanguage.Name}" />
             <StatusBarItem Grid.Column="6" ToolTip="Last Modified"
-                           DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
-                           Content="{Binding ActiveEditor.TextBox.FileSave}" />
+				DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
+				Content="{Binding ActiveEditor.TextBox.FileSave}" />
             <StatusBarItem Grid.Column="7" Content="INS" ToolTip="Insert Mode" IsEnabled="{Binding IsInsPressed}" />
             <StatusBarItem Grid.Column="8" Content="CAPS" ToolTip="Caps Lock" IsEnabled="{Binding IsCapsPressed}" />
             <StatusBarItem Grid.Column="9" Content="SCR" ToolTip="Scroll Lock" IsEnabled="{Binding IsScrollPressed}" />

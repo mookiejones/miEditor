@@ -660,13 +660,12 @@ namespace miRobotEditor.Abstract
             var regex = new Regex(ShiftRegex, RegexOptions.IgnoreCase);
             var matchCollection = regex.Matches(doc.Text);
             var count = matchCollection.Count;
-            var num4 = 0.0;
+           
             var num5 = (double)((count > 0) ? (100 / count) : count);
             foreach (Match match in regex.Matches(doc.Text))
             {
                 // ReSharper disable UnusedVariable
-                num4 += num5;
-                var num6 = Convert.ToDouble(match.Groups[3].Value) + num;
+                 var num6 = Convert.ToDouble(match.Groups[3].Value) + num;
 
                 var num7 = Convert.ToDouble(match.Groups[4].Value) + num2;
 
@@ -757,8 +756,7 @@ namespace miRobotEditor.Abstract
             }
         }
 
-        private object locker = new object();
-
+    
         private void GetVariables()
         {
             var task = GetVariablesAsync();

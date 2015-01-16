@@ -10,12 +10,21 @@ namespace miRobotEditor.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var editor = value as IEditorDocument;
+            if (editor == null)
+            {
+                Console.WriteLine("Editor is nothing");
+            }
             return editor ?? Binding.DoNothing;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var editor = value as IEditorDocument;
+            if (editor == null)
+            {
+                Console.WriteLine("Editor is nothing");
+            }
+
             return editor ?? Binding.DoNothing;
         }
     }
