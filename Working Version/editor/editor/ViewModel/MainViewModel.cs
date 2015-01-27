@@ -310,9 +310,13 @@ namespace miRobotEditor.ViewModel
             {
                 if (_activeEditor != value)
                 {
+                    if (_activeEditor==null)
+                    {
+                        Console.WriteLine("is Null");
+                    }
                     _activeEditor = value;
-                    if (_activeEditor != null)
-                        _activeEditor.TextBox.Focus();
+               //     if (_activeEditor != null)
+                    //    _activeEditor.TextBox.Focus();
                     // ReSharper disable once RedundantArgumentDefaultValue
                     RaisePropertyChanged("ActiveEditor");
                     // ReSharper disable once ExplicitCallerInfoArgument
@@ -386,7 +390,7 @@ namespace miRobotEditor.ViewModel
 
         private bool CanExecuteCloseCommand(object arg)
         {
-            return true;
+            return arg != null;
         }
 
         #endregion CloseCommand
