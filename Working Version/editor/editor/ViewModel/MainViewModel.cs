@@ -112,14 +112,15 @@ namespace miRobotEditor.ViewModel
         #endregion Tools
 
         #region Files
+        private List<IEditorDocument> _files = new List<IEditorDocument>();
+        public List<IEditorDocument> Files { get { return _files; } set { _files = value; RaisePropertyChanged("Files"); } }
+//        private readonly ObservableCollection<IEditorDocument> _files = new ObservableCollection<IEditorDocument>();
+  //      private readonly ReadOnlyObservableCollection<IEditorDocument> _readonlyFiles = null;
 
-        private readonly ObservableCollection<IEditorDocument> _files = new ObservableCollection<IEditorDocument>();
-        private readonly ReadOnlyObservableCollection<IEditorDocument> _readonlyFiles = null;
-
-        public IEnumerable<IEditorDocument> Files
-        {
-            get { return _readonlyFiles ?? new ReadOnlyObservableCollection<IEditorDocument>(_files); }
-        }
+        //public IEnumerable<IEditorDocument> Files
+        //{
+        //    get { return _readonlyFiles ?? new ReadOnlyObservableCollection<IEditorDocument>(_files); }
+        //}
 
         #endregion Files
 
@@ -380,10 +381,10 @@ namespace miRobotEditor.ViewModel
 
         private void ExecuteCloseCommand(object obj)
         {
-            _files.Remove(ActiveEditor);
+            Files.Remove(ActiveEditor);
 
             ActiveEditor.Close();
-            ActiveEditor = _files.FirstOrDefault();
+            ActiveEditor = Files.FirstOrDefault();
             // Close(ActiveEditor);
             RaisePropertyChanged("ActiveEditor");
         }
@@ -778,7 +779,7 @@ namespace miRobotEditor.ViewModel
 
         private IEditorDocument OpenFile(string filepath)
         {
-            var document = _files.FirstOrDefault(fm => fm.FileName == filepath);
+            var document = Files.FirstOrDefault(fm => fm.FileName == filepath);
             IEditorDocument result;
             if (document != null)
             {
@@ -795,7 +796,7 @@ namespace miRobotEditor.ViewModel
                     JumpList.AddToRecentCategory(filepath);
                 }
                 document.IsActive = true;
-                _files.Add(document);
+                Files.Add(document);
                 ActiveEditor = document;
                 result = document;
             }
@@ -810,8 +811,9 @@ namespace miRobotEditor.ViewModel
 
         public void AddNewFile()
         {
-            _files.Add(new DocumentViewModel(null));
-            ActiveEditor = _files.Last();
+            var file = new DocumentViewModel(null);
+            Files.Add(file);
+            ActiveEditor = file;
         }
 
         public void LoadFile(IList<string> args)
@@ -859,7 +861,7 @@ namespace miRobotEditor.ViewModel
 
         internal void Close(IEditorDocument fileToClose)
         {
-            _files.Remove(fileToClose);
+            Files.Remove(fileToClose);
             // ReSharper disable once ExplicitCallerInfoArgument
             RaisePropertyChanged("ActiveEditor");
         }
