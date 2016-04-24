@@ -1,2 +1,2 @@
 language: csharp
-solution: ./Working\ Version\editor\editor.sln
+solution: src/editor.sln
