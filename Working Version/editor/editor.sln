@@ -12,6 +12,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FFEF53
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{7C234374-BB07-4ED0-A390-AA6F6AFFAC63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin", "..\Plugin\Plugin.csproj", "{5DE6EFF2-CDAA-44A6-81E8-8F902D464D33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KukaPlugin", "KukaPlugin\KukaPlugin.csproj", "{3358CCE9-694A-4826-9B0A-63A5E5ADCFF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delete", "..\..\Delete\Delete.csproj", "{B83CBADF-15E2-4597-9A98-2E16E4998D78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +30,18 @@ Global
 		{7DD9D9C5-F83D-474A-A6CA-7A113C6EFD40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DD9D9C5-F83D-474A-A6CA-7A113C6EFD40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DD9D9C5-F83D-474A-A6CA-7A113C6EFD40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DE6EFF2-CDAA-44A6-81E8-8F902D464D33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DE6EFF2-CDAA-44A6-81E8-8F902D464D33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DE6EFF2-CDAA-44A6-81E8-8F902D464D33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DE6EFF2-CDAA-44A6-81E8-8F902D464D33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3358CCE9-694A-4826-9B0A-63A5E5ADCFF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3358CCE9-694A-4826-9B0A-63A5E5ADCFF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3358CCE9-694A-4826-9B0A-63A5E5ADCFF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3358CCE9-694A-4826-9B0A-63A5E5ADCFF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B83CBADF-15E2-4597-9A98-2E16E4998D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B83CBADF-15E2-4597-9A98-2E16E4998D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B83CBADF-15E2-4597-9A98-2E16E4998D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B83CBADF-15E2-4597-9A98-2E16E4998D78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -35,7 +35,7 @@
     <PublisherName>Mookies Robot Editor</PublisherName>
     <SuiteName>Mookies Editor</SuiteName>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>30</ApplicationRevision>
+    <ApplicationRevision>31</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -315,6 +315,7 @@
     <Compile Include="Messages\ErrorMessage.cs" />
     <Compile Include="Messages\MessageBase.cs" />
     <Compile Include="Messages\WindowMessage.cs" />
+    <Compile Include="Plugins\PluginLoader.cs" />
     <Compile Include="Selectors\PanesTemplateSelector.cs" />
     <Compile Include="ViewModel\AdjustST.cs" />
     <Compile Include="ViewModel\ArchiveInfoViewModel.cs" />
@@ -721,6 +722,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ClassDiagram1.cd" />
     <None Include="editor_1_TemporaryKey.pfx" />
     <None Include="editor_TemporaryKey.pfx" />
     <None Include="mookie.key.pfx" />
@@ -821,7 +823,12 @@
   <ItemGroup>
     <Resource Include="Images\resources-vxmethod_icon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Plugin\Plugin.csproj">
+      <Project>{5de6eff2-cdaa-44a6-81e8-8f902d464d33}</Project>
+      <Name>Plugin</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Images\kuka.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

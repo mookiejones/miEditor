@@ -11,16 +11,19 @@ using miRobotEditor.Interfaces;
 using miRobotEditor.Languages;
 using miRobotEditor.Messages;
 using miRobotEditor.Windows;
+using miRobotEditor.Plugins;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Shell;
 using Xceed.Wpf.AvalonDock.Layout;
 using Xceed.Wpf.AvalonDock.Themes;
+using Plugin;
 
 namespace miRobotEditor.ViewModel
 {
@@ -49,7 +52,36 @@ namespace miRobotEditor.ViewModel
                 AngleConverter
             };
 
+
+            LoadPlugins();
             Messenger.Default.Register<WindowMessage>(this, GetMessage);
+        }
+
+        private void LoadPlugins()
+        {
+
+         
+            //miRobotEditor.Plugins
+            var asm = Assembly.GetExecutingAssembly();
+            var fi = new System.IO.FileInfo(asm.Location);
+            var pluginDirectory = new DirectoryInfo(fi.Directory.FullName + "\\plugins");
+            if (!pluginDirectory.Exists)
+                pluginDirectory.Create();
+            var plugins=PluginLoader<IPluginBase>.LoadPlugins(pluginDirectory.FullName);
+            foreach (var plugin in plugins)
+            {
+
+                plugin.Loaded();
+                Console.WriteLine();
+
+            }
+            var fileNames = pluginDirectory.GetFiles("*.dll");
+
+            ICollection<Assembly> assemblies = new List<Assembly>(fileNames.Length);
+            foreach (var file in fileNames)
+            {
+                var p=Assembly.LoadFile(file.FullName);
+            }
         }
 
         private void GetMessage(WindowMessage obj)
@@ -112,15 +144,15 @@ namespace miRobotEditor.ViewModel
         #endregion Tools
 
         #region Files
-        private List<IEditorDocument> _files = new List<IEditorDocument>();
-        public List<IEditorDocument> Files { get { return _files; } set { _files = value; RaisePropertyChanged("Files"); } }
-//        private readonly ObservableCollection<IEditorDocument> _files = new ObservableCollection<IEditorDocument>();
-  //      private readonly ReadOnlyObservableCollection<IEditorDocument> _readonlyFiles = null;
-
-        //public IEnumerable<IEditorDocument> Files
-        //{
-        //    get { return _readonlyFiles ?? new ReadOnlyObservableCollection<IEditorDocument>(_files); }
-        //}
+        /*private List<IEditorDocument> _files = new List<IEditorDocument>();
+        public List<IEditorDocument> Files { 
+            get { return _files; } 
+            set {
+                _files = value; RaisePropertyChanged("Files");
+            } }*/
+      private readonly ObservableCollection<IEditorDocument> _files = new ObservableCollection<IEditorDocument>();
+      private ObservableCollection<IEditorDocument> _readonlyFiles = null;
+      public ObservableCollection<IEditorDocument> Files { get { return _readonlyFiles ?? (_readonlyFiles = new ObservableCollection<IEditorDocument>(_files)); } }
 
         #endregion Files
 
@@ -316,11 +348,9 @@ namespace miRobotEditor.ViewModel
                         Console.WriteLine("is Null");
                     }
                     _activeEditor = value;
-               //     if (_activeEditor != null)
-                    //    _activeEditor.TextBox.Focus();
-                    // ReSharper disable once RedundantArgumentDefaultValue
+                  if (_activeEditor != null)
+                     _activeEditor.TextBox.Focus();
                     RaisePropertyChanged("ActiveEditor");
-                    // ReSharper disable once ExplicitCallerInfoArgument
                     RaisePropertyChanged("Title");
                 }
             }
