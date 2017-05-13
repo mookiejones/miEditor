@@ -5,6 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Media;
 using miRobotEditor.ViewModel;
+using robot_editor.Classes;
 
 namespace miRobotEditor.Classes
 {

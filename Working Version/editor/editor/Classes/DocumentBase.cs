@@ -6,6 +6,7 @@ using miRobotEditor.Controls.TextEditor;
 using miRobotEditor.Interfaces;
 using miRobotEditor.Languages;
 using miRobotEditor.ViewModel;
+using robot_editor.Interfaces;
 
 namespace miRobotEditor.Classes
 {
@@ -79,9 +80,9 @@ namespace miRobotEditor.Classes
 
         #region FileLanguage
 
-        private AbstractLanguageClass _filelanguage = new LanguageBase();
+        private ILanguageClass _filelanguage = new LanguageBase();
 
-        public AbstractLanguageClass FileLanguage
+        public ILanguageClass FileLanguage
         {
             get { return _filelanguage; }
             set

@@ -9,6 +9,8 @@ using ICSharpCode.AvalonEdit.Editing;
 using ICSharpCode.AvalonEdit.Rendering;
 using ICSharpCode.AvalonEdit.Utils;
 using miRobotEditor.Interfaces;
+using robot_editor.Classes;
+using robot_editor.Interfaces;
 
 namespace miRobotEditor.Classes
 {

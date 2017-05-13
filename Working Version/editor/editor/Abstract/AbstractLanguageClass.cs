@@ -16,19 +16,22 @@ using ICSharpCode.AvalonEdit.CodeCompletion;
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Folding;
 using miRobotEditor.Classes;
-using miRobotEditor.Controls.TextEditor;
 using miRobotEditor.Enums;
 using miRobotEditor.Interfaces;
 using miRobotEditor.Languages;
-using miRobotEditor.Messages;
 using miRobotEditor.ViewModel;
 using Microsoft.Practices.ServiceLocation;
+using robot_editor.Classes;
+using robot_editor.Interfaces;
+using robot_editor.Messages;
+using Editor = miRobotEditor.Controls.TextEditor.Editor;
 using FileInfo = System.IO.FileInfo;
-
+using LanguageBase = miRobotEditor.Languages.LanguageBase;
+using MessageType=robot_editor.Enums.MessageType;
 namespace miRobotEditor.Abstract
 {
     [Localizable(false)]
-    public abstract class AbstractLanguageClass : ViewModelBase, ILanguageRegex
+    public abstract class AbstractLanguageClass : ViewModelBase, ILanguageRegex,ILanguageClass
     {
 
         public const RegexOptions RO_OPT = RegexOptions.IgnoreCase | RegexOptions.Multiline;
@@ -236,6 +239,8 @@ namespace miRobotEditor.Abstract
 
         #endregion Files
 
+        string ILanguageClass.Filename { get; }
+        string ILanguageClass.RawText { set; }
         internal string RawText { private get; set; }
 
         private static AbstractLanguageClass Instance { get; set; }
@@ -247,6 +252,16 @@ namespace miRobotEditor.Abstract
         public string SnippetPath
         {
             get { return ".\\Editor\\Config _files\\Snippet.xml"; }
+        }
+
+        string ILanguageClass.Intellisense
+        {
+            get { return Intellisense; }
+        }
+
+        string ILanguageClass.SnippetFilePath
+        {
+            get { return SnippetFilePath; }
         }
 
         protected string Intellisense
@@ -313,7 +328,13 @@ namespace miRobotEditor.Abstract
             get { return _readOnlysignals ?? new ReadOnlyCollection<IVariable>(_signals); }
         }
 
+        robot_editor.Classes.AbstractFoldingStrategy ILanguageClass.FoldingStrategy
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         public abstract string CommentChar { get; }
+        IEnumerable<IVariable> ILanguageClass.Fields { get; set; }
 
         public abstract List<string> SearchFilters { get; }
 
@@ -328,6 +349,7 @@ namespace miRobotEditor.Abstract
         public abstract Regex EnumRegex { get; }
 
         public abstract Regex XYZRegex { get; }
+        public ReadOnlyObservableCollection<> Snippets { get; private set; }
 
         public abstract Regex StructRegex { get; }
 
@@ -519,6 +541,11 @@ namespace miRobotEditor.Abstract
             var match = regex.Match(text);
             var result = match.Success ? match.Groups[1].Length : 0;
             return result;
+        }
+
+        string ILanguageClass.FoldTitle(FoldingSection section, TextDocument document)
+        {
+            return FoldTitle(section, document);
         }
 
         public virtual bool IsLineCommented(string text)

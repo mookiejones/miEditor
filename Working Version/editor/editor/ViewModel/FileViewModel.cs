@@ -112,13 +112,13 @@ namespace miRobotEditor.ViewModel
         private static ImageSourceConverter _isc = new ImageSourceConverter();
 */
 
-        public FileViewModel(string filePath)
+        protected FileViewModel(string filePath)
         {
             FilePath = filePath;
             Title = FileName;
         }
 
-        public FileViewModel()
+        protected FileViewModel()
         {
             IsDirty = true;
             Title = FileName;

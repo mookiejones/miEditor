@@ -36,6 +36,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using robot_editor.Classes;
+using robot_editor.Interfaces;
+using AbstractFoldingStrategy = miRobotEditor.Abstract.AbstractFoldingStrategy;
+using ClassMemberBookmark = miRobotEditor.Classes.ClassMemberBookmark;
+using EDITORTYPE = miRobotEditor.Enums.EDITORTYPE;
+using IconBarManager = miRobotEditor.Classes.IconBarManager;
+using IconBarMargin = miRobotEditor.Classes.IconBarMargin;
+using LanguageBase = miRobotEditor.Languages.LanguageBase;
 
 namespace miRobotEditor.Controls.TextEditor
 {
@@ -258,7 +266,7 @@ namespace miRobotEditor.Controls.TextEditor
 
         #region FileLanguage
 
-        public AbstractLanguageClass FileLanguage
+        public ILanguageClass FileLanguage
         {
             get { return _filelanguage; }
             set

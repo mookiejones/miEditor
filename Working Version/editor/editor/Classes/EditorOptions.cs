@@ -10,6 +10,7 @@ using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 using miRobotEditor.Interfaces;
 using miRobotEditor.Languages;
+using robot_editor.Interfaces;
 
 namespace miRobotEditor.Classes
 {

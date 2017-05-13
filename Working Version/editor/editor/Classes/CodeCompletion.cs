@@ -7,6 +7,7 @@ using ICSharpCode.AvalonEdit.Editing;
 using Microsoft.Practices.ServiceLocation;
 using miRobotEditor.Interfaces;
 using miRobotEditor.ViewModel;
+using robot_editor.Interfaces;
 
 namespace miRobotEditor.Classes
 {

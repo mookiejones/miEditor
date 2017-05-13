@@ -20,6 +20,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KukaPlugin", "KukaPlugin\Ku
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delete", "..\..\Delete\Delete.csproj", "{B83CBADF-15E2-4597-9A98-2E16E4998D78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "robot_editor", "..\..\..\..\Temp\robot_editor\robot_editor\robot_editor.csproj", "{C1E746A2-EB3E-44C3-90D9-949E471C43F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{3E5DD6D0-AAE0-4A47-9332-BAB4FB0C0279}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,8 +46,15 @@ Global
 		{B83CBADF-15E2-4597-9A98-2E16E4998D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B83CBADF-15E2-4597-9A98-2E16E4998D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B83CBADF-15E2-4597-9A98-2E16E4998D78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1E746A2-EB3E-44C3-90D9-949E471C43F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1E746A2-EB3E-44C3-90D9-949E471C43F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1E746A2-EB3E-44C3-90D9-949E471C43F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1E746A2-EB3E-44C3-90D9-949E471C43F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3358CCE9-694A-4826-9B0A-63A5E5ADCFF2} = {3E5DD6D0-AAE0-4A47-9332-BAB4FB0C0279}
 	EndGlobalSection
 EndGlobal

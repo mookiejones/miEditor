@@ -9,12 +9,13 @@ using miRobotEditor.Abstract;
 using miRobotEditor.Classes;
 using miRobotEditor.Enums;
 using miRobotEditor.ViewModel;
+using Plugin;
 using FileInfo = System.IO.FileInfo;
 
 namespace miRobotEditor.Languages
 {
     [Localizable(false)]
-    public sealed class LanguageBase : AbstractLanguageClass
+    public sealed class LanguageBase : AbstractLanguageClass,ILanguageClass
     {
         public LanguageBase()
         {

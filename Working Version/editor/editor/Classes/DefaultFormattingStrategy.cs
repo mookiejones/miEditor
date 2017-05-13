@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using ICSharpCode.AvalonEdit.Document;
 using miRobotEditor.Interfaces;
+using robot_editor.Classes;
+using robot_editor.Interfaces;
+using IDocumentLine = ICSharpCode.AvalonEdit.Document.IDocumentLine;
 
 namespace miRobotEditor.Classes
 {

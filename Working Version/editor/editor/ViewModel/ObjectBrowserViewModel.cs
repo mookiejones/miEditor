@@ -6,6 +6,7 @@ using Microsoft.Practices.ServiceLocation;
 using miRobotEditor.Classes;
 using miRobotEditor.Enums;
 using miRobotEditor.Interfaces;
+using robot_editor.Interfaces;
 
 namespace miRobotEditor.ViewModel
 {
